@@ -13,10 +13,10 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.use(express.static('public'));
-
 app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);
+
+app.get('/', (req, res) => res.send('Product Catalog API Running'));
 
 db.connect().then(() => {
   app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
